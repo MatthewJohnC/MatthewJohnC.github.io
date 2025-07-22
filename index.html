@@ -1,11 +1,146 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Welcome</title>
-  </head>
-  <body>
-    <h1>Hello from MatthewJohnC!</h1>
-    <p>This is your live website hosted for free on GitHub Pages 🎉</p>
-  </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Big Brother US Pool Standings</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f8f9fa;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  /* Standings table */
+  table.standings {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    border-collapse: collapse;
+  }
+  table.standings th, table.standings td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  table.standings th {
+    background-color: #007bff;
+    color: white;
+  }
+  /* Alliances container */
+  .alliances {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .alliance {
+    margin-bottom: 40px;
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #ddd;
+  }
+  .alliance h2 {
+    margin-bottom: 15px;
+    color: #343a40;
+  }
+  .members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .member {
+    width: 100px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+  }
+  .member img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #007bff;
+  }
+</style>
+</head>
+<body>
+
+<h1>Big Brother US 27 Pool Standings</h1>
+
+<table class="standings">
+  <thead>
+    <tr>
+      <th>Alliance</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alliance Alpha</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <td>Alliance Beta</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <td>Alliance Gamma</td>
+      <td>29</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alliances">
+
+  <div class="alliance">
+    <h2>Alliance Alpha</h2>
+    <div class="members">
+      <div class="member">
+        <img src="https://example.com/headshots/contestant1.jpg" alt="Contestant 1" />
+        <div>Contestant 1</div>
+      </div>
+      <div class="member">
+        <img src="https://example.com/headshots/contestant2.jpg" alt="Contestant 2" />
+        <div>Contestant 2</div>
+      </div>
+      <!-- Add more members -->
+    </div>
+  </div>
+
+  <div class="alliance">
+    <h2>Alliance Beta</h2>
+    <div class="members">
+      <div class="member">
+        <img src="https://example.com/headshots/contestant3.jpg" alt="Contestant 3" />
+        <div>Contestant 3</div>
+      </div>
+      <div class="member">
+        <img src="https://example.com/headshots/contestant4.jpg" alt="Contestant 4" />
+        <div>Contestant 4</div>
+      </div>
+      <!-- Add more members -->
+    </div>
+  </div>
+
+  <div class="alliance">
+    <h2>Alliance Gamma</h2>
+    <div class="members">
+      <div class="member">
+        <img src="https://example.com/headshots/contestant5.jpg" alt="Contestant 5" />
+        <div>Contestant 5</div>
+      </div>
+      <div class="member">
+        <img src="https://example.com/headshots/contestant6.jpg" alt="Contestant 6" />
+        <div>Contestant 6</div>
+      </div>
+      <!-- Add more members -->
+    </div>
+  </div>
+
+</div>
+
+</body>
 </html>
