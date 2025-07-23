@@ -436,6 +436,71 @@ table {
   <!-- Add more player cards here -->
   
 </div>
+<style>
+  .leaderboard {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0;
+    list-style: none;
+  }
 
+  .leaderboard-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  }
+
+  .leaderboard-rank {
+    width: 30px;
+    font-weight: bold;
+    color: #555;
+    font-size: 1.1em;
+  }
+
+  .leaderboard-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+  }
+
+  .leaderboard-name {
+    flex-grow: 1;
+    font-weight: 600;
+    font-size: 1.05em;
+    color: #333;
+  }
+
+  .leaderboard-points {
+    font-weight: 700;
+    font-size: 1.15em;
+    color: #007bff;
+  }
+</style>
+
+<ul class="leaderboard">
+  <!-- Example Item -->
+  <li class="leaderboard-item">
+    <div class="leaderboard-rank">1</div>
+    <img class="leaderboard-img" src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AmyBingham.jpg" alt="Amy Bingham" />
+    <div class="leaderboard-name">Amy Bingham</div>
+    <div class="leaderboard-points">1 pt</div>
+  </li>
+
+  <!-- Next Player -->
+  <li class="leaderboard-item">
+    <div class="leaderboard-rank">2</div>
+    <img class="leaderboard-img" src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/VincePanaro.jpg" alt="Vince Panaro" />
+    <div class="leaderboard-name">Vince Panaro</div>
+    <div class="leaderboard-points">3 pts</div>
+  </li>
+
+  <!-- Continue adding items in descending order -->
+</ul>
 </body>
 </html>
