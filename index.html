@@ -14,13 +14,14 @@
       text-align: center;
       color: #004085;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 40px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      background: white;
-    }
+table {
+  margin: 20px auto 40px auto; /* top/bottom and automatic left/right margins centers the table */
+  max-width: 600px; /* limit max width so it doesn’t get too wide */
+  width: 100%; /* but still responsive */
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background: white;
+}
     th, td {
       border: 1px solid #ddd;
       padding: 10px;
