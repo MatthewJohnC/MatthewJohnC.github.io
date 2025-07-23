@@ -2,49 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Big Brother 27 Pool Standings</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 30px;
-      background-color: #f9f9f9;
+      margin: 20px;
+      background: #f8f9fa;
       color: #333;
     }
-
-    h1 {
+    h1, h2 {
       text-align: center;
-      margin-bottom: 10px;
     }
-
-    h2 {
-      margin-top: 40px;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
-    }
-
-    .standings {
-      max-width: 600px;
-      margin: 0 auto 40px auto;
+    table {
+      width: 100%;
       border-collapse: collapse;
+      margin-bottom: 40px;
     }
-
-    .standings th, .standings td {
-      border: 1px solid #ccc;
+    th, td {
+      border: 1px solid #ddd;
       padding: 10px;
       text-align: left;
     }
-
-    .standings th {
-      background-color: #eee;
+    th {
+      background-color: #007bff;
+      color: white;
     }
-
-    .team {
-      margin-bottom: 30px;
+    .alliance {
+      margin-bottom: 50px;
     }
-
     .members {
-      margin-left: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .member {
+      width: 120px;
+      text-align: center;
+    }
+    .member img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #007bff;
+    }
+    .member p {
+      margin-top: 8px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -52,159 +57,75 @@
 
   <h1>Big Brother 27 Pool Standings</h1>
 
-  <table class="standings">
+  <table>
     <thead>
       <tr>
-        <th>Alliance</th>
+        <th>Alliance Name</th>
         <th>Points</th>
       </tr>
     </thead>
     <tbody>
       <tr><td>Josh Alliance</td><td>7</td></tr>
       <tr><td>Kristy Boyd’s Alliance</td><td>5</td></tr>
-      <tr><td>Rachel (Kandy Kane’s)</td><td>4</td></tr>
-      <tr><td>Mark (MM's Funky Bunch)</td><td>3</td></tr>
       <tr><td>Kailey Alliance</td><td>3</td></tr>
-      <tr><td>Jake Boyd’s Alliance</td><td>3</td></tr>
       <tr><td>Team Brian</td><td>3</td></tr>
-      <tr><td>Ann Alliance</td><td>2</td></tr>
+      <tr><td>Jake Boyd’s Alliance</td><td>3</td></tr>
+      <tr><td>Mark (MM's Funky Bunch)</td><td>3</td></tr>
       <tr><td>Matt (Still Floatin')</td><td>0</td></tr>
       <tr><td>Ian Alliance</td><td>0</td></tr>
+      <tr><td>Ann Alliance</td><td>2</td></tr>
       <tr><td>Tomei (Give'r Give'r Blind River)</td><td>0</td></tr>
       <tr><td>Nicole (The Core Four)</td><td>0</td></tr>
-      <tr><td>Team Shawn</td><td>0</td></tr>
+      <tr><td>Rachel (Kandy Kane’s)</td><td>4</td></tr>
+      <tr><td>Team Shawn</td><td>2</td></tr>
     </tbody>
   </table>
 
-  <div class="team">
+  <div class="alliance">
     <h2>Josh Alliance</h2>
     <div class="members">
-      <p>Morgan Pope</p>
-      <p>Clifton Williams</p>
-      <p>Zach Cornell</p>
-      <p>Vince Panaro</p>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
+        <p>Morgan Pope</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KeanuSoto.jpg" alt="Keanu Soto" />
+        <p>Keanu Soto</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AshleyHollis.jpg" alt="Ashley Hollis" />
+        <p>Ashley Hollis</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/CliftonWilliams.jpg" alt="Clifton Williams" />
+        <p>Clifton Williams</p>
+      </div>
     </div>
   </div>
 
-  <div class="team">
+  <div class="alliance">
     <h2>Kristy Boyd’s Alliance</h2>
     <div class="members">
-      <p>Morgan Pope</p>
-      <p>Ashley Hollis</p>
-      <p>Zach Cornell</p>
-      <p>Vince Panaro</p>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
+        <p>Morgan Pope</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AshleyHollis.jpg" alt="Ashley Hollis" />
+        <p>Ashley Hollis</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ZachCornell.jpg" alt="Zach Cornell" />
+        <p>Zach Cornell</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/VincePanaro.jpg" alt="Vince Panaro" />
+        <p>Vince Panaro</p>
+      </div>
     </div>
   </div>
 
-  <div class="team">
-    <h2>Rachel (Kandy Kane’s)</h2>
-    <div class="members">
-      <p>Clifton Williams</p>
-      <p>Katherine Woodman</p>
-      <p>Jimmy Heagerty</p>
-      <p>Zach Cornell</p>
-    </div>
-  </div>
-
-  <div class="team">
-    <h2>Mark (MM's Funky Bunch)</h2>
-    <div class="members">
-      <p>Keanu Soto</p>
-      <p>Morgan Pope</p>
-      <p>Vince Panaro</p>
-      <p>Rylie Jeffries</p>
-    </div>
-  </div>
-
-  <div class="team">
-    <h2>Kailey Alliance</h2>
-    <div class="members">
-      <p>Morgan Pope</p>
-      <p>Vince Panaro</p>
-      <p>Lauren Domingue</p>
-      <p>Adrian Rocha</p>
-    </div>
-  </div>
-
-  <div class="team">
-    <h2>Jake Boyd’s Alliance</h2>
-    <div class="members">
-      <p>Keanu Soto</p>
-      <p>Ashley Hollis</p>
-      <p>Rylie Jeffries</p>
-      <p>Amy Bingham</p>
-    </div>
-  </div>
-
-  <div class="team">
-    <h2>Team Brian</h2>
-    <div class="members">
-      <p>Adrian Rocha</p>
-      <p>Vince Panaro</p>
-      <p>Katherine Woodman</p>
-      <p>Zach Cornell</p>
-    </div>
-  </div>
-
-  <div class="team">
-    <h2>Ann Alliance</h2>
-    <div class="members">
-      <p>Adrian Rocha</p>
-      <p>Ashley Hollis</p>
-      <p>Katherine Woodman</p>
-      <p>Keanu Soto</p>
-    </div>
-  </div>
-
-  <div class="team">
-    <h2>Matt (Still Floatin')</h2>
-    <div class="members">
-      <p>Morgan Pope</p>
-      <p>Keanu Soto</p>
-      <p>Rylie Jeffries</p>
-      <p>Zach Cornell</p>
-    </div>
-  </div>
-
-  <div class="team">
-    <h2>Ian Alliance</h2>
-    <div class="members">
-      <p>Morgan Pope</p>
-      <p>Isaiah "Zae" Frederich</p>
-      <p>Lauren Domingue</p>
-      <p>Keanu Soto</p>
-    </div>
-  </div>
-
-  <div class="team">
-    <h2>Tomei (Give'r Give'r Blind River)</h2>
-    <div class="members">
-      <p>Clifton Williams</p>
-      <p>Katherine Woodman</p>
-      <p>Mickey Lee</p>
-      <p>Adrian Rocha</p>
-    </div>
-  </div>
-
-  <div class="team">
-    <h2>Nicole (The Core Four)</h2>
-    <div class="members">
-      <p>Clifton Williams</p>
-      <p>Katherine Woodman</p>
-      <p>Mickey Lee</p>
-      <p>Adrian Rocha</p>
-    </div>
-  </div>
-
-  <div class="team">
-    <h2>Team Shawn</h2>
-    <div class="members">
-      <p>Ashley Hollis</p>
-      <p>Morgan Pope</p>
-      <p>Kelley Jorgensen</p>
-      <p>Vince Panaro</p>
-    </div>
-  </div>
+  <!-- Add more alliances in the same pattern -->
 
 </body>
 </html>
