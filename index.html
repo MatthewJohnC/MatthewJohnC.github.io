@@ -14,14 +14,14 @@
       text-align: center;
       color: #004085;
     }
-table {
-  margin: 20px auto 40px auto; /* top/bottom and automatic left/right margins centers the table */
-  max-width: 600px; /* limit max width so it doesn’t get too wide */
-  width: 100%; /* but still responsive */
-  border-collapse: collapse;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  background: white;
-}
+    table {
+      margin: 20px auto 40px auto;
+      max-width: 600px;
+      width: 100%;
+      border-collapse: collapse;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: white;
+    }
     th, td {
       border: 1px solid #ddd;
       padding: 10px;
@@ -59,6 +59,133 @@ table {
       transform: scale(1.05);
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
+
+    /* Evicted player style */
+    .evicted img {
+      filter: grayscale(100%);
+      opacity: 0.7;
+    }
+    .evicted p {
+      color: red !important;
+    }
+
+    /* Player Stats Section */
+    .player-stats-container {
+      max-width: 900px;
+      margin: 40px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .player-card {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      width: 280px;
+      padding: 15px 20px;
+    }
+    .player-image {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+      border: 2px solid #007bff;
+      transition: filter 0.3s ease;
+    }
+    .player-info {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .player-name-points {
+      font-weight: 700;
+      font-size: 1.2em;
+      color: #007bff;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .player-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 0.9em;
+    }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      color: #333;
+    }
+    .stat-label {
+      font-weight: 600;
+    }
+    .evicted .player-image {
+      filter: grayscale(100%);
+      opacity: 0.7;
+    }
+    .evicted .player-name-points {
+      color: red;
+    }
+    @media (max-width: 600px) {
+      .player-card {
+        width: 100%;
+      }
+    }
+
+    /* Leaderboard style */
+    .leaderboard {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0;
+      list-style: none;
+    }
+    .leaderboard-item {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin-bottom: 10px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    }
+    .leaderboard-rank {
+      width: 30px;
+      font-weight: bold;
+      color: #555;
+      font-size: 1.1em;
+    }
+    .leaderboard-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    .leaderboard-name {
+      flex-grow: 1;
+      font-weight: 600;
+      font-size: 1.05em;
+      color: #333;
+    }
+    .leaderboard-points {
+      font-weight: 700;
+      font-size: 1.15em;
+      color: #007bff;
+    }
+    .leaderboard-item.evicted .leaderboard-name {
+      color: red;
+    }
+    .leaderboard-item.evicted .leaderboard-img {
+      filter: grayscale(100%);
+      opacity: 0.7;
+    }
   </style>
 </head>
 <body>
@@ -80,16 +207,16 @@ table {
       <tr><td>Jake Boyd’s Alliance</td><td>3</td></tr>
       <tr><td>Mark (MM's Funky Bunch)</td><td>3</td></tr>
       <tr><td>Rachel (Kandy Kane’s)</td><td>4</td></tr>
-      <tr><td>Team Shawn</td><td>2</td></tr>
+      <tr><td>Team Shawn</td><td>6</td></tr>
       <tr><td>Ann Alliance</td><td>2</td></tr>
       <tr><td>Matt (Still Floatin')</td><td>0</td></tr>
-      <tr><td>Ian Alliance</td><td>0</td></tr>
+      <tr><td>Ian Alliance</td><td>-2</td></tr>
       <tr><td>Tomei (Give'r Give'r Blind River)</td><td>0</td></tr>
       <tr><td>Nicole (The Core Four)</td><td>0</td></tr>
     </tbody>
   </table>
 
-  <!-- Josh Alliance -->
+  <!-- Alliances Section -->
   <div class="alliance">
     <h2>Josh Alliance</h2>
     <div class="members">
@@ -112,7 +239,6 @@ table {
     </div>
   </div>
 
-  <!-- Kristy Boyd’s Alliance -->
   <div class="alliance">
     <h2>Kristy Boyd’s Alliance</h2>
     <div class="members">
@@ -135,7 +261,6 @@ table {
     </div>
   </div>
 
-  <!-- Kailey Alliance -->
   <div class="alliance">
     <h2>Kailey Alliance</h2>
     <div class="members">
@@ -158,7 +283,6 @@ table {
     </div>
   </div>
 
-  <!-- Team Brian -->
   <div class="alliance">
     <h2>Team Brian</h2>
     <div class="members">
@@ -181,7 +305,6 @@ table {
     </div>
   </div>
 
-  <!-- Jake Boyd’s Alliance -->
   <div class="alliance">
     <h2>Jake Boyd’s Alliance</h2>
     <div class="members">
@@ -204,7 +327,6 @@ table {
     </div>
   </div>
 
-  <!-- Mark (MM's Funky Bunch) -->
   <div class="alliance">
     <h2>Mark (MM's Funky Bunch)</h2>
     <div class="members">
@@ -227,7 +349,6 @@ table {
     </div>
   </div>
 
-  <!-- Rachel (Kandy Kane’s) -->
   <div class="alliance">
     <h2>Rachel (Kandy Kane’s)</h2>
     <div class="members">
@@ -250,7 +371,6 @@ table {
     </div>
   </div>
 
-  <!-- Team Shawn -->
   <div class="alliance">
     <h2>Team Shawn</h2>
     <div class="members">
@@ -273,7 +393,6 @@ table {
     </div>
   </div>
 
-  <!-- Ann Alliance -->
   <div class="alliance">
     <h2>Ann Alliance</h2>
     <div class="members">
@@ -296,7 +415,6 @@ table {
     </div>
   </div>
 
-  <!-- Tomei (Give'r Give'r Blind River) -->
   <div class="alliance">
     <h2>Tomei (Give'r Give'r Blind River)</h2>
     <div class="members">
@@ -319,7 +437,6 @@ table {
     </div>
   </div>
 
-  <!-- Nicole (The Core Four) -->
   <div class="alliance">
     <h2>Nicole (The Core Four)</h2>
     <div class="members">
@@ -332,175 +449,24 @@ table {
         <p>Katherine Woodman</p>
       </div>
       <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/JimmyHeagerty.jpg" alt="Jimmy Heagerty" />
-        <p>Jimmy Heagerty</p>
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MickeyLee.jpg" alt="Mickey Lee" />
+        <p>Mickey Lee</p>
       </div>
       <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ZachCornell.jpg" alt="Zach Cornell" />
-        <p>Zach Cornell</p>
-      </div>
-    </div>
-  </div>
-<style>
-  .player-stats-container {
-    max-width: 900px;
-    margin: 40px auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-
-  .player-card {
-    display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    width: 280px;
-    padding: 15px 20px;
-  }
-
-  .player-image {
-    flex-shrink: 0;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 15px;
-    border: 2px solid #007bff;
-  }
-
-  .player-info {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .player-name-points {
-    font-weight: 700;
-    font-size: 1.2em;
-    color: #007bff;
-    margin-bottom: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .player-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    font-size: 0.9em;
-  }
-
-  .stat-row {
-    display: flex;
-    justify-content: space-between;
-    color: #333;
-  }
-
-  .stat-label {
-    font-weight: 600;
-  }
-
-  /* Responsive tweak */
-  @media (max-width: 600px) {
-    .player-card {
-      width: 100%;
-    }
-  }
-</style>
-
-<div class="player-stats-container">
-
-  <!-- Example Player Card -->
-  <div class="player-card">
-    <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AmyBingham.jpg" alt="Amy Bingham" class="player-image" />
-    <div class="player-info">
-      <div class="player-name-points">
-        <span>Amy Bingham</span>
-        <span>1 pt</span>
-      </div>
-      <div class="player-stats">
-        <div class="stat-row"><span class="stat-label">HOH Wins</span> <span>0</span></div>
-        <div class="stat-row"><span class="stat-label">Veto Wins</span> <span>0</span></div>
-        <div class="stat-row"><span class="stat-label">Blockbuster Wins</span> <span>1</span></div>
-        <div class="stat-row"><span class="stat-label">Survived Eviction</span> <span>1</span></div>
-        <div class="stat-row"><span class="stat-label">Place Finish Points</span> <span>—</span></div>
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AdrianRocha.jpg" alt="Adrian Rocha" />
+        <p>Adrian Rocha</p>
       </div>
     </div>
   </div>
 
-  <!-- Add more player cards here -->
-  
-</div>
-<style>
-  .leaderboard {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 0;
-    list-style: none;
-  }
-
-  .leaderboard-item {
-    display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 8px;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 6px rgba(0,0,0,0.1);
-  }
-
-  .leaderboard-rank {
-    width: 30px;
-    font-weight: bold;
-    color: #555;
-    font-size: 1.1em;
-  }
-
-  .leaderboard-img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 15px;
-  }
-
-  .leaderboard-name {
-    flex-grow: 1;
-    font-weight: 600;
-    font-size: 1.05em;
-    color: #333;
-  }
-
-  .leaderboard-points {
-    font-weight: 700;
-    font-size: 1.15em;
-    color: #007bff;
-  }
-</style>
-
-<ul class="leaderboard">
-  <!-- Example Item -->
-  <li class="leaderboard-item">
-    <div class="leaderboard-rank">1</div>
-    <img class="leaderboard-img" src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AmyBingham.jpg" alt="Amy Bingham" />
-    <div class="leaderboard-name">Amy Bingham</div>
-    <div class="leaderboard-points">1 pt</div>
-  </li>
-
-  <!-- Next Player -->
-  <li class="leaderboard-item">
-    <div class="leaderboard-rank">2</div>
-    <img class="leaderboard-img" src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/VincePanaro.jpg" alt="Vince Panaro" />
-    <div class="leaderboard-name">Vince Panaro</div>
-    <div class="leaderboard-points">3 pts</div>
-  </li>
-
-  <!-- Continue adding items in descending order -->
-</ul>
+  <script>
+    // Mark Isaiah "Zae" Frederich as evicted
+    document.querySelectorAll('.member').forEach(member => {
+      const nameElem = member.querySelector('p');
+      if (nameElem.textContent.trim() === 'Isaiah "Zae" Frederich') {
+        member.classList.add('evicted');
+      }
+    });
+  </script>
 </body>
 </html>
