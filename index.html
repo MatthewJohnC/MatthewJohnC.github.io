@@ -33,6 +33,9 @@
     }
     .alliance {
       margin-bottom: 50px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .members {
       display: flex;
@@ -46,9 +49,6 @@
       font-weight: bold;
       color: #222;
     }
-    .member.eliminated {
-      color: red;
-    }
     .member img {
       width: 100px;
       height: 100px;
@@ -57,17 +57,26 @@
       border: 3px solid #007bff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.15);
       transition: transform 0.3s ease;
-    }
-    .member.eliminated img {
-      filter: grayscale(100%);
-      border-color: #ccc;
+      filter: none;
     }
     .member img:hover {
       transform: scale(1.05);
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
-
-    /* Player stats cards */
+    /* Eliminated player styling */
+    .eliminated img {
+      filter: grayscale(100%);
+      opacity: 0.7;
+      border-color: #ff0000;
+    }
+    .eliminated-name {
+      color: red !important;
+    }
+    /* Standings table: alliances with negative points are last */
+    .standings-row.negative {
+      color: #666;
+    }
+    /* Player stats section */
     .player-stats-container {
       max-width: 900px;
       margin: 40px auto;
@@ -85,9 +94,6 @@
       width: 280px;
       padding: 15px 20px;
     }
-    .player-card.eliminated .player-name-points span:first-child {
-      color: red;
-    }
     .player-image {
       flex-shrink: 0;
       width: 80px;
@@ -96,11 +102,13 @@
       object-fit: cover;
       margin-right: 15px;
       border: 2px solid #007bff;
+      filter: none;
       transition: filter 0.3s ease;
     }
     .player-card.eliminated .player-image {
       filter: grayscale(100%);
-      border-color: #ccc;
+      opacity: 0.7;
+      border-color: #ff0000;
     }
     .player-info {
       flex-grow: 1;
@@ -122,17 +130,22 @@
       flex-direction: column;
       gap: 5px;
       font-size: 0.9em;
-      color: #333;
     }
     .stat-row {
       display: flex;
       justify-content: space-between;
+      color: #333;
     }
     .stat-label {
       font-weight: 600;
     }
-
-    /* Leaderboard */
+    /* Responsive tweak */
+    @media (max-width: 600px) {
+      .player-card {
+        width: 100%;
+      }
+    }
+    /* Leaderboard style */
     .leaderboard {
       max-width: 600px;
       margin: 40px auto;
@@ -148,13 +161,6 @@
       margin-bottom: 10px;
       box-shadow: 0 0 6px rgba(0,0,0,0.1);
     }
-    .leaderboard-item.eliminated .leaderboard-name {
-      color: red;
-    }
-    .leaderboard-item.eliminated img {
-      filter: grayscale(100%);
-      border-color: #ccc;
-    }
     .leaderboard-rank {
       width: 30px;
       font-weight: bold;
@@ -167,8 +173,11 @@
       border-radius: 50%;
       object-fit: cover;
       margin-right: 15px;
-      border: 2px solid #007bff;
-      transition: filter 0.3s ease;
+      filter: none;
+    }
+    .leaderboard-item.eliminated .leaderboard-img {
+      filter: grayscale(100%);
+      opacity: 0.7;
     }
     .leaderboard-name {
       flex-grow: 1;
@@ -176,20 +185,13 @@
       font-size: 1.05em;
       color: #333;
     }
+    .leaderboard-item.eliminated .leaderboard-name {
+      color: red;
+    }
     .leaderboard-points {
       font-weight: 700;
       font-size: 1.15em;
       color: #007bff;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 600px) {
-      .player-card {
-        width: 100%;
-      }
-      table {
-        max-width: 100%;
-      }
     }
   </style>
 </head>
@@ -197,7 +199,6 @@
 
   <h1>Big Brother 27 Pool Standings</h1>
 
-  <!-- Alliance Standings Table -->
   <table>
     <thead>
       <tr>
@@ -207,9 +208,9 @@
     </thead>
     <tbody>
       <tr><td>Josh Alliance</td><td>7</td></tr>
-      <tr><td>Team Shawn</td><td>6</td></tr>
       <tr><td>Kristy Boyd’s Alliance</td><td>5</td></tr>
       <tr><td>Rachel (Kandy Kane’s)</td><td>4</td></tr>
+      <tr><td>Team Shawn</td><td>6</td></tr>
       <tr><td>Kailey Alliance</td><td>3</td></tr>
       <tr><td>Team Brian</td><td>3</td></tr>
       <tr><td>Jake Boyd’s Alliance</td><td>3</td></tr>
@@ -218,11 +219,11 @@
       <tr><td>Matt (Still Floatin')</td><td>0</td></tr>
       <tr><td>Tomei (Give'r Give'r Blind River)</td><td>0</td></tr>
       <tr><td>Nicole (The Core Four)</td><td>0</td></tr>
-      <tr><td style="font-weight:bold; color:red;">Ian Alliance</td><td style="color:red; font-weight:bold;">-2</td></tr>
+      <tr class="standings-row negative"><td>Ian Alliance</td><td>-2</td></tr>
     </tbody>
   </table>
 
-  <!-- Alliances Members -->
+  <!-- Alliances -->
 
   <!-- Josh Alliance -->
   <div class="alliance">
@@ -262,6 +263,52 @@
       <div class="member">
         <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ZachCornell.jpg" alt="Zach Cornell" />
         <p>Zach Cornell</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/VincePanaro.jpg" alt="Vince Panaro" />
+        <p>Vince Panaro</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rachel (Kandy Kane’s) -->
+  <div class="alliance">
+    <h2>Rachel (Kandy Kane’s)</h2>
+    <div class="members">
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/CliftonWillWilliams.jpg" alt="Clifton Williams" />
+        <p>Clifton Williams</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KatherineWoodman.jpg" alt="Katherine Woodman" />
+        <p>Katherine Woodman</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/JimmyHeagerty.jpg" alt="Jimmy Heagerty" />
+        <p>Jimmy Heagerty</p>
+      </div>
+      <div class="member eliminated">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ZaeFrederich.jpg" alt="Isaiah 'Zae' Frederich" />
+        <p class="eliminated-name">Isaiah "Zae" Frederich</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Shawn -->
+  <div class="alliance">
+    <h2>Team Shawn</h2>
+    <div class="members">
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AshleyHollis.jpg" alt="Ashley Hollis" />
+        <p>Ashley Hollis</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
+        <p>Morgan Pope</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KelleyJorgensen.jpg" alt="Kelley Jorgensen" />
+        <p>Kelley Jorgensen</p>
       </div>
       <div class="member">
         <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/VincePanaro.jpg" alt="Vince Panaro" />
@@ -362,52 +409,6 @@
     </div>
   </div>
 
-  <!-- Rachel (Kandy Kane’s) -->
-  <div class="alliance">
-    <h2>Rachel (Kandy Kane’s)</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/CliftonWillWilliams.jpg" alt="Clifton Williams" />
-        <p>Clifton Williams</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KatherineWoodman.jpg" alt="Katherine Woodman" />
-        <p>Katherine Woodman</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/JimmyHeagerty.jpg" alt="Jimmy Heagerty" />
-        <p>Jimmy Heagerty</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ZachCornell.jpg" alt="Zach Cornell" />
-        <p>Zach Cornell</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Team Shawn -->
-  <div class="alliance">
-    <h2>Team Shawn</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AshleyHollis.jpg" alt="Ashley Hollis" />
-        <p>Ashley Hollis</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
-        <p>Morgan Pope</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KelleyJorgensen.jpg" alt="Kelley Jorgensen" />
-        <p>Kelley Jorgensen</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/VincePanaro.jpg" alt="Vince Panaro" />
-        <p>Vince Panaro</p>
-      </div>
-    </div>
-  </div>
-
   <!-- Ann Alliance -->
   <div class="alliance">
     <h2>Ann Alliance</h2>
@@ -436,7 +437,7 @@
     <h2>Tomei (Give'r Give'r Blind River)</h2>
     <div class="members">
       <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ClifftonWillWilliams.jpg" alt="Clifton Williams" />
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/CliftonWillWilliams.jpg" alt="Clifton Williams" />
         <p>Clifton Williams</p>
       </div>
       <div class="member">
@@ -459,7 +460,7 @@
     <h2>Nicole (The Core Four)</h2>
     <div class="members">
       <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ClifftonWillWilliams.jpg" alt="Clifton Williams" />
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/CliftonWillWilliams.jpg" alt="Clifton Williams" />
         <p>Clifton Williams</p>
       </div>
       <div class="member">
@@ -479,15 +480,15 @@
 
   <!-- Ian Alliance -->
   <div class="alliance">
-    <h2 style="color:red;">Ian Alliance</h2>
+    <h2>Ian Alliance</h2>
     <div class="members">
       <div class="member">
         <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
         <p>Morgan Pope</p>
       </div>
       <div class="member eliminated">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/IsaiahZaeFrederich.jpg" alt="Isaiah 'Zae' Frederich" />
-        <p>Isaiah "Zae" Frederich</p>
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ZaeFrederich.jpg" alt="Isaiah 'Zae' Frederich" />
+        <p class="eliminated-name">Isaiah "Zae" Frederich</p>
       </div>
       <div class="member">
         <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/LaurenDomingue.jpg" alt="Lauren Domingue" />
@@ -496,6 +497,29 @@
       <div class="member">
         <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KeanuSoto.jpg" alt="Keanu Soto" />
         <p>Keanu Soto</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Matt (Still Floatin') -->
+  <div class="alliance">
+    <h2>Matt (Still Floatin')</h2>
+    <div class="members">
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
+        <p>Morgan Pope</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KeanuSoto.jpg" alt="Keanu Soto" />
+        <p>Keanu Soto</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/RylieJeffries.jpg" alt="Rylie Jeffries" />
+        <p>Rylie Jeffries</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ZachCornell.jpg" alt="Zach Cornell" />
+        <p>Zach Cornell</p>
       </div>
     </div>
   </div>
