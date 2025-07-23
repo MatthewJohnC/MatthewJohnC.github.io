@@ -46,6 +46,9 @@
       font-weight: bold;
       color: #222;
     }
+    .member.eliminated {
+      color: red;
+    }
     .member img {
       width: 100px;
       height: 100px;
@@ -55,21 +58,16 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.15);
       transition: transform 0.3s ease;
     }
+    .member.eliminated img {
+      filter: grayscale(100%);
+      border-color: #ccc;
+    }
     .member img:hover {
       transform: scale(1.05);
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
-    /* Evicted player style */
-    .evicted img {
-      filter: grayscale(100%);
-      opacity: 0.7;
-    }
-    .evicted p {
-      color: red !important;
-    }
-
-    /* Player Stats Section */
+    /* Player stats cards */
     .player-stats-container {
       max-width: 900px;
       margin: 40px auto;
@@ -87,6 +85,9 @@
       width: 280px;
       padding: 15px 20px;
     }
+    .player-card.eliminated .player-name-points span:first-child {
+      color: red;
+    }
     .player-image {
       flex-shrink: 0;
       width: 80px;
@@ -96,6 +97,10 @@
       margin-right: 15px;
       border: 2px solid #007bff;
       transition: filter 0.3s ease;
+    }
+    .player-card.eliminated .player-image {
+      filter: grayscale(100%);
+      border-color: #ccc;
     }
     .player-info {
       flex-grow: 1;
@@ -117,29 +122,17 @@
       flex-direction: column;
       gap: 5px;
       font-size: 0.9em;
+      color: #333;
     }
     .stat-row {
       display: flex;
       justify-content: space-between;
-      color: #333;
     }
     .stat-label {
       font-weight: 600;
     }
-    .evicted .player-image {
-      filter: grayscale(100%);
-      opacity: 0.7;
-    }
-    .evicted .player-name-points {
-      color: red;
-    }
-    @media (max-width: 600px) {
-      .player-card {
-        width: 100%;
-      }
-    }
 
-    /* Leaderboard style */
+    /* Leaderboard */
     .leaderboard {
       max-width: 600px;
       margin: 40px auto;
@@ -155,6 +148,13 @@
       margin-bottom: 10px;
       box-shadow: 0 0 6px rgba(0,0,0,0.1);
     }
+    .leaderboard-item.eliminated .leaderboard-name {
+      color: red;
+    }
+    .leaderboard-item.eliminated img {
+      filter: grayscale(100%);
+      border-color: #ccc;
+    }
     .leaderboard-rank {
       width: 30px;
       font-weight: bold;
@@ -167,6 +167,8 @@
       border-radius: 50%;
       object-fit: cover;
       margin-right: 15px;
+      border: 2px solid #007bff;
+      transition: filter 0.3s ease;
     }
     .leaderboard-name {
       flex-grow: 1;
@@ -179,12 +181,15 @@
       font-size: 1.15em;
       color: #007bff;
     }
-    .leaderboard-item.evicted .leaderboard-name {
-      color: red;
-    }
-    .leaderboard-item.evicted .leaderboard-img {
-      filter: grayscale(100%);
-      opacity: 0.7;
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      .player-card {
+        width: 100%;
+      }
+      table {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -192,6 +197,7 @@
 
   <h1>Big Brother 27 Pool Standings</h1>
 
+  <!-- Alliance Standings Table -->
   <table>
     <thead>
       <tr>
@@ -201,22 +207,24 @@
     </thead>
     <tbody>
       <tr><td>Josh Alliance</td><td>7</td></tr>
+      <tr><td>Team Shawn</td><td>6</td></tr>
       <tr><td>Kristy Boyd’s Alliance</td><td>5</td></tr>
+      <tr><td>Rachel (Kandy Kane’s)</td><td>4</td></tr>
       <tr><td>Kailey Alliance</td><td>3</td></tr>
       <tr><td>Team Brian</td><td>3</td></tr>
       <tr><td>Jake Boyd’s Alliance</td><td>3</td></tr>
       <tr><td>Mark (MM's Funky Bunch)</td><td>3</td></tr>
-      <tr><td>Rachel (Kandy Kane’s)</td><td>4</td></tr>
-      <tr><td>Team Shawn</td><td>6</td></tr>
       <tr><td>Ann Alliance</td><td>2</td></tr>
       <tr><td>Matt (Still Floatin')</td><td>0</td></tr>
-      <tr><td>Ian Alliance</td><td>-2</td></tr>
       <tr><td>Tomei (Give'r Give'r Blind River)</td><td>0</td></tr>
       <tr><td>Nicole (The Core Four)</td><td>0</td></tr>
+      <tr><td style="font-weight:bold; color:red;">Ian Alliance</td><td style="color:red; font-weight:bold;">-2</td></tr>
     </tbody>
   </table>
 
-  <!-- Alliances Section -->
+  <!-- Alliances Members -->
+
+  <!-- Josh Alliance -->
   <div class="alliance">
     <h2>Josh Alliance</h2>
     <div class="members">
@@ -239,6 +247,7 @@
     </div>
   </div>
 
+  <!-- Kristy Boyd’s Alliance -->
   <div class="alliance">
     <h2>Kristy Boyd’s Alliance</h2>
     <div class="members">
@@ -261,6 +270,7 @@
     </div>
   </div>
 
+  <!-- Kailey Alliance -->
   <div class="alliance">
     <h2>Kailey Alliance</h2>
     <div class="members">
@@ -283,6 +293,7 @@
     </div>
   </div>
 
+  <!-- Team Brian -->
   <div class="alliance">
     <h2>Team Brian</h2>
     <div class="members">
@@ -305,6 +316,7 @@
     </div>
   </div>
 
+  <!-- Jake Boyd’s Alliance -->
   <div class="alliance">
     <h2>Jake Boyd’s Alliance</h2>
     <div class="members">
@@ -327,6 +339,7 @@
     </div>
   </div>
 
+  <!-- Mark (MM's Funky Bunch) -->
   <div class="alliance">
     <h2>Mark (MM's Funky Bunch)</h2>
     <div class="members">
@@ -349,6 +362,7 @@
     </div>
   </div>
 
+  <!-- Rachel (Kandy Kane’s) -->
   <div class="alliance">
     <h2>Rachel (Kandy Kane’s)</h2>
     <div class="members">
@@ -371,6 +385,7 @@
     </div>
   </div>
 
+  <!-- Team Shawn -->
   <div class="alliance">
     <h2>Team Shawn</h2>
     <div class="members">
@@ -393,6 +408,7 @@
     </div>
   </div>
 
+  <!-- Ann Alliance -->
   <div class="alliance">
     <h2>Ann Alliance</h2>
     <div class="members">
@@ -415,11 +431,12 @@
     </div>
   </div>
 
+  <!-- Tomei (Give'r Give'r Blind River) -->
   <div class="alliance">
     <h2>Tomei (Give'r Give'r Blind River)</h2>
     <div class="members">
       <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/CliftonWillWilliams.jpg" alt="Clifton Williams" />
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ClifftonWillWilliams.jpg" alt="Clifton Williams" />
         <p>Clifton Williams</p>
       </div>
       <div class="member">
@@ -437,11 +454,12 @@
     </div>
   </div>
 
+  <!-- Nicole (The Core Four) -->
   <div class="alliance">
     <h2>Nicole (The Core Four)</h2>
     <div class="members">
       <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/CliftonWillWilliams.jpg" alt="Clifton Williams" />
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ClifftonWillWilliams.jpg" alt="Clifton Williams" />
         <p>Clifton Williams</p>
       </div>
       <div class="member">
@@ -459,14 +477,28 @@
     </div>
   </div>
 
-  <script>
-    // Mark Isaiah "Zae" Frederich as evicted
-    document.querySelectorAll('.member').forEach(member => {
-      const nameElem = member.querySelector('p');
-      if (nameElem.textContent.trim() === 'Isaiah "Zae" Frederich') {
-        member.classList.add('evicted');
-      }
-    });
-  </script>
+  <!-- Ian Alliance -->
+  <div class="alliance">
+    <h2 style="color:red;">Ian Alliance</h2>
+    <div class="members">
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
+        <p>Morgan Pope</p>
+      </div>
+      <div class="member eliminated">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/IsaiahZaeFrederich.jpg" alt="Isaiah 'Zae' Frederich" />
+        <p>Isaiah "Zae" Frederich</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/LaurenDomingue.jpg" alt="Lauren Domingue" />
+        <p>Lauren Domingue</p>
+      </div>
+      <div class="member">
+        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KeanuSoto.jpg" alt="Keanu Soto" />
+        <p>Keanu Soto</p>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
