@@ -10,161 +10,64 @@
       background: #f8f9fa;
       color: #333;
     }
-    h1, h2 {
+    h1 {
       text-align: center;
       color: #004085;
+      margin-bottom: 40px;
     }
-    table {
-      margin: 20px auto 40px auto;
-      max-width: 600px;
-      width: 100%;
+    .standings {
+      max-width: 800px;
+      margin: 0 auto 60px auto;
       border-collapse: collapse;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      background: white;
+      width: 100%;
     }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    th {
-      background-color: #007bff;
-      color: white;
-    }
-    .alliance {
-      margin-bottom: 50px;
-    }
-    .members {
+    .alliance-row {
+      border-bottom: 1px solid #ddd;
+      padding: 12px 0;
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.1em;
+      color: #007bff;
+    }
+    .alliance-name {
+      flex: 1;
+    }
+    .alliance-points {
+      width: 40px;
+      text-align: right;
+    }
+    .members-row {
+      display: flex;
+      gap: 15px;
+      margin-top: 8px;
+      margin-bottom: 30px;
+      justify-content: flex-start;
       flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
     }
     .member {
-      width: 120px;
       text-align: center;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 0.85em;
       color: #222;
+      width: 80px;
     }
     .member img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #007bff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-    }
-    .member img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-    /* Grayscale filter for eliminated players' images */
-    .eliminated-img {
-      filter: grayscale(100%);
-    }
-
-    /* Player Stats styling */
-    .player-stats-container {
-      max-width: 900px;
-      margin: 40px auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .player-card {
-      display: flex;
-      align-items: center;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      width: 280px;
-      padding: 15px 20px;
-    }
-    .player-image {
-      flex-shrink: 0;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-right: 15px;
-      border: 2px solid #007bff;
-    }
-    .player-info {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .player-name-points {
-      font-weight: 700;
-      font-size: 1.2em;
-      color: #007bff;
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .player-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      font-size: 0.9em;
-    }
-    .stat-row {
-      display: flex;
-      justify-content: space-between;
-      color: #333;
-    }
-    .stat-label {
-      font-weight: 600;
-    }
-    @media (max-width: 600px) {
-      .player-card {
-        width: 100%;
-      }
-    }
-
-    /* Leaderboard styling */
-    .leaderboard {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 0;
-      list-style: none;
-    }
-    .leaderboard-item {
-      display: flex;
-      align-items: center;
-      background: white;
-      border-radius: 8px;
-      padding: 10px 20px;
-      margin-bottom: 10px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.1);
-    }
-    .leaderboard-rank {
-      width: 30px;
-      font-weight: bold;
-      color: #555;
-      font-size: 1.1em;
-    }
-    .leaderboard-img {
       width: 60px;
       height: 60px;
-      border-radius: 50%;
       object-fit: cover;
-      margin-right: 15px;
+      border-radius: 50%;
+      border: 2px solid #007bff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      display: block;
+      margin: 0 auto 5px;
+      transition: filter 0.3s ease;
     }
-    .leaderboard-name {
-      flex-grow: 1;
-      font-weight: 600;
-      font-size: 1.05em;
-      color: #333;
-    }
-    .leaderboard-points {
-      font-weight: 700;
-      font-size: 1.15em;
-      color: #007bff;
+    /* Grayscale filter for evicted */
+    .evicted {
+      filter: grayscale(100%);
+      opacity: 0.6;
     }
   </style>
 </head>
@@ -172,294 +75,101 @@
 
   <h1>Big Brother 27 Pool Standings</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Alliance Name</th>
-        <th>Points</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Josh Alliance</td><td>7</td></tr>
-      <tr><td>Kristy Boyd’s Alliance</td><td>5</td></tr>
-      <tr><td>Rachel (Kandy Kane’s)</td><td>4</td></tr>
-      <tr><td>Jake Boyd’s Alliance</td><td>3</td></tr>
-      <tr><td>Kailey Alliance</td><td>3</td></tr>
-      <tr><td>Team Brian</td><td>3</td></tr>
-      <tr><td>Mark (MM's Funky Bunch)</td><td>3</td></tr>
-      <tr><td>Team Shawn</td><td>6</td></tr>
-      <tr><td>Ann Alliance</td><td>2</td></tr>
-      <tr><td>Tomei (Give'r Give'r Blind River)</td><td>0</td></tr>
-      <tr><td>Nicole (The Core Four)</td><td>0</td></tr>
-      <tr><td>Matt (Still Floatin')</td><td>0</td></tr>
-      <tr><td>Ian Alliance</td><td>-2</td></tr>
-    </tbody>
-  </table>
+  <div id="standings-container"></div>
 
-  <!-- Alliances Section -->
-  <div class="alliance">
-    <h2>Josh Alliance</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
-        <p>Morgan Pope</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KeanuSoto.jpg" alt="Keanu Soto" />
-        <p>Keanu Soto</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AshleyHollis.jpg" alt="Ashley Hollis" />
-        <p>Ashley Hollis</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/CliftonWillWilliams.jpg" alt="Clifton Williams" />
-        <p>Clifton Williams</p>
-      </div>
-    </div>
-  </div>
+  <script>
+    // List of evicted houseguests - use exact names as in members
+    const evicted = new Set([
+      "Jimmy Heagerty",
+      "Adrian Rocha",
+      "Amy Bingham",
+      "Isaiah \"Zae\" Frederich"
+    ]);
 
-  <div class="alliance">
-    <h2>Kristy Boyd’s Alliance</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
-        <p>Morgan Pope</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AshleyHollis.jpg" alt="Ashley Hollis" />
-        <p>Ashley Hollis</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ZachCornell.jpg" alt="Zach Cornell" />
-        <p>Zach Cornell</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/VincePanaro.jpg" alt="Vince Panaro" />
-        <p>Vince Panaro</p>
-      </div>
-    </div>
-  </div>
+    // Houseguest images URL dictionary
+    const images = {
+      "Morgan Pope": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg",
+      "Keanu Soto": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KeanuSoto.jpg",
+      "Rylie Jeffries": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/RylieJeffries.jpg",
+      "Zach Cornell": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ZachCornell.jpg",
+      "Vince Panaro": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/VincePanaro.jpg",
+      "Lauren Domingue": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/LaurenDomingue.jpg",
+      "Adrian Rocha": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AdrianRocha.jpg",
+      "Katherine Woodman": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KatherineWoodman.jpg",
+      "Ashley Hollis": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AshleyHollis.jpg",
+      "Amy Bingham": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AmyBingham.jpg",
+      "Isaiah \"Zae\" Frederich": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/IsaiahZaeFrederich.jpg",
+      "Clifton Williams": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/CliftonWillWilliams.jpg",
+      "Jimmy Heagerty": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/JimmyHeagerty.jpg",
+      "Kelley Jorgensen": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KelleyJorgensen.jpg",
+      "Mickey Lee": "https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MickeyLee.jpg",
+    };
 
-  <div class="alliance">
-    <h2>Rachel (Kandy Kane’s)</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/CliftonWillWilliams.jpg" alt="Clifton Williams" />
-        <p>Clifton Williams</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KatherineWoodman.jpg" alt="Katherine Woodman" />
-        <p>Katherine Woodman</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/JimmyHeagerty.jpg" alt="Jimmy Heagerty" />
-        <p>Jimmy Heagerty</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ZachCornell.jpg" alt="Zach Cornell" />
-        <p>Zach Cornell</p>
-      </div>
-    </div>
-  </div>
+    // Alliances data with members and points
+    const alliances = [
+      { name: "Mark Alliance", points: 13, members: ["Keanu Soto", "Morgan Pope", "Vince Panaro", "Rylie Jeffries"] },
+      { name: "Jake Boyd’s Alliance", points: 11, members: ["Keanu Soto", "Ashley Hollis", "Rylie Jeffries", "Amy Bingham"] },
+      { name: "Matt Alliance", points: 10, members: ["Morgan Pope", "Keanu Soto", "Rylie Jeffries", "Zach Cornell"] },
+      { name: "Team Shawn", points: 10, members: ["Ashley Hollis", "Morgan Pope", "Kelley Jorgensen", "Vince Panaro"] },
+      { name: "Josh Alliance", points: 9, members: ["Morgan Pope", "Clifton Williams", "Zach Cornell", "Vince Panaro"] },
+      { name: "Rachel Alliance", points: 8, members: ["Clifton Williams", "Katherine Woodman", "Jimmy Heagerty", "Zach Cornell"] },
+      { name: "Ann Alliance", points: 8, members: ["Adrian Rocha", "Ashley Hollis", "Katherine Woodman", "Keanu Soto"] },
+      { name: "Ian Alliance", points: 7, members: ["Morgan Pope", "Isaiah \"Zae\" Frederich", "Lauren Domingue", "Keanu Soto"] },
+      { name: "Kailey Alliance", points: 6, members: ["Morgan Pope", "Vince Panaro", "Lauren Domingue", "Adrian Rocha"] },
+      { name: "Kristy Alliance", points: 5, members: ["Morgan Pope", "Ashley Hollis", "Zach Cornell", "Vince Panaro"] },
+      { name: "Tomei Alliance", points: 5, members: ["Clifton Williams", "Katherine Woodman", "Mickey Lee", "Adrian Rocha"] },
+      { name: "Nicole Alliance", points: 5, members: ["Clifton Williams", "Katherine Woodman", "Mickey Lee", "Adrian Rocha"] },
+      { name: "Brian Alliance", points: 3, members: ["Adrian Rocha", "Vince Panaro", "Katherine Woodman", "Zach Cornell"] },
+    ];
 
-  <div class="alliance">
-    <h2>Jake Boyd’s Alliance</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
-        <p>Morgan Pope</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AmyBingham.jpg" alt="Amy Bingham" />
-        <p>Amy Bingham</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/RylieJeffries.jpg" alt="Rylie Jeffries" />
-        <p>Rylie Jeffries</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ZachCornell.jpg" alt="Zach Cornell" />
-        <p>Zach Cornell</p>
-      </div>
-    </div>
-  </div>
+    // Sort alliances descending by points
+    alliances.sort((a, b) => b.points - a.points);
 
-  <div class="alliance">
-    <h2>Kailey Alliance</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
-        <p>Morgan Pope</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/VincePanaro.jpg" alt="Vince Panaro" />
-        <p>Vince Panaro</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/LaurenDomingue.jpg" alt="Lauren Domingue" />
-        <p>Lauren Domingue</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AdrianRocha.jpg" alt="Adrian Rocha" />
-        <p>Adrian Rocha</p>
-      </div>
-    </div>
-  </div>
+    const container = document.getElementById('standings-container');
 
-  <div class="alliance">
-    <h2>Team Brian</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AdrianRocha.jpg" alt="Adrian Rocha" />
-        <p>Adrian Rocha</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/VincePanaro.jpg" alt="Vince Panaro" />
-        <p>Vince Panaro</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KatherineWoodman.jpg" alt="Katherine Woodman" />
-        <p>Katherine Woodman</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/ZachCornell.jpg" alt="Zach Cornell" />
-        <p>Zach Cornell</p>
-      </div>
-    </div>
-  </div>
+    alliances.forEach(alliance => {
+      // Create alliance row
+      const allianceRow = document.createElement('div');
+      allianceRow.className = 'alliance-row';
 
-  <div class="alliance">
-    <h2>Mark (MM's Funky Bunch)</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KeanuSoto.jpg" alt="Keanu Soto" />
-        <p>Keanu Soto</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
-        <p>Morgan Pope</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/VincePanaro.jpg" alt="Vince Panaro" />
-        <p>Vince Panaro</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/RylieJeffries.jpg" alt="Rylie Jeffries" />
-        <p>Rylie Jeffries</p>
-      </div>
-    </div>
-  </div>
+      const nameDiv = document.createElement('div');
+      nameDiv.className = 'alliance-name';
+      nameDiv.textContent = alliance.name;
 
-  <div class="alliance">
-    <h2>Team Shawn</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AshleyHollis.jpg" alt="Ashley Hollis" />
-        <p>Ashley Hollis</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
-        <p>Morgan Pope</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KelleyJorgensen.jpg" alt="Kelley Jorgensen" />
-        <p>Kelley Jorgensen</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/VincePanaro.jpg" alt="Vince Panaro" />
-        <p>Vince Panaro</p>
-      </div>
-    </div>
-  </div>
+      const pointsDiv = document.createElement('div');
+      pointsDiv.className = 'alliance-points';
+      pointsDiv.textContent = alliance.points;
 
-  <div class="alliance">
-    <h2>Ann Alliance</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AdrianRocha.jpg" alt="Adrian Rocha" />
-        <p>Adrian Rocha</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AshleyHollis.jpg" alt="Ashley Hollis" />
-        <p>Ashley Hollis</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KatherineWoodman.jpg" alt="Katherine Woodman" />
-        <p>Katherine Woodman</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KeanuSoto.jpg" alt="Keanu Soto" />
-        <p>Keanu Soto</p>
-      </div>
-    </div>
-  </div>
+      allianceRow.appendChild(nameDiv);
+      allianceRow.appendChild(pointsDiv);
+      container.appendChild(allianceRow);
 
-  <div class="alliance">
-    <h2>Tomei (Give'r Give'r Blind River)</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/CliftonWillWilliams.jpg" alt="Clifton Williams" />
-        <p>Clifton Williams</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KatherineWoodman.jpg" alt="Katherine Woodman" />
-        <p>Katherine Woodman</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MickeyLee.jpg" alt="Mickey Lee" />
-        <p>Mickey Lee</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AdrianRocha.jpg" alt="Adrian Rocha" />
-        <p>Adrian Rocha</p>
-      </div>
-    </div>
-  </div>
+      // Create members row below alliance
+      const membersRow = document.createElement('div');
+      membersRow.className = 'members-row';
 
-  <div class="alliance">
-    <h2>Nicole (The Core Four)</h2>
-    <div class="members">
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/CliftonWillWilliams.jpg" alt="Clifton Williams" />
-        <p>Clifton Williams</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KatherineWoodman.jpg" alt="Katherine Woodman" />
-        <p>Katherine Woodman</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MickeyLee.jpg" alt="Mickey Lee" />
-        <p>Mickey Lee</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/AdrianRocha.jpg" alt="Adrian Rocha" />
-        <p>Adrian Rocha</p>
-      </div>
-    </div>
-  </div>
+      alliance.members.forEach(member => {
+        const memberDiv = document.createElement('div');
+        memberDiv.className = 'member';
 
-  <div class="alliance">
-    <h2>Ian Alliance</h2>
-    <div class="members">
-      <div class="member">
-        <img class="eliminated-img" src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/IsaiahZaeFrederich.jpg" alt="Isaiah Zae Frederich" />
-        <p>Isaiah "Zae" Frederich</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/MorganPope.jpg" alt="Morgan Pope" />
-        <p>Morgan Pope</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/LaurenDomingue.jpg" alt="Lauren Domingue" />
-        <p>Lauren Domingue</p>
-      </div>
-      <div class="member">
-        <img src="https://raw.githubusercontent.com/MatthewJohnC/headshots/main/KeanuSoto.jpg" alt="Keanu Soto" />
-        <p>Keanu Soto</p>
-      </div>
-    </div>
-  </div>
+        const img = document.createElement('img');
+        img.alt = member;
+        img.src = images[member] || ''; // fallback empty if not found
+        if(evicted.has(member)) {
+          img.classList.add('evicted');
+        }
+        memberDiv.appendChild(img);
+
+        const nameP = document.createElement('p');
+        nameP.textContent = member;
+        memberDiv.appendChild(nameP);
+
+        membersRow.appendChild(memberDiv);
+      });
+
+      container.appendChild(membersRow);
+    });
+  </script>
 
 </body>
 </html>
